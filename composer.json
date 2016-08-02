@@ -9,6 +9,7 @@
     "illuminate/support": "^5.2",
     "php": ">=7.0.0",
     "suin/php-rss-writer": "^1.4",
+    "rtconner/laravel-tagging": "~2.1",
     "watson/sitemap": "^2.0"
   },
   "autoload": {
