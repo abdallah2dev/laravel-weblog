@@ -16,6 +16,7 @@ class LaravelWeblog extends AggregateServiceProvider
     public function boot()
     {
         if (!$this->app->routesAreCached()) {
+            require __DIR__.'/../../routes/api.php';
             require __DIR__.'/../../routes/web.php';
         }
 
