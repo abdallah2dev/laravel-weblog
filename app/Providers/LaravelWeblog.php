@@ -1,6 +1,4 @@
-<?php
-
-namespace GeneaLabs\LaravelWeblog\Providers;
+<?php namespace GeneaLabs\LaravelWeblog\Providers;
 
 use GeneaLabs\LaravelWeblog\Console\Commands\Migrate;
 use GeneaLabs\LaravelWeblog\Console\Commands\Publish;
@@ -18,8 +16,10 @@ class LaravelWeblog extends AggregateServiceProvider
     public function boot()
     {
         if (!$this->app->routesAreCached()) {
-            require __DIR__.'/../Http/routes.php';
+            require __DIR__.'/../../routes/web.php';
         }
+
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'genealabs-laravel-weblog');
 
         $this->publishes([
             __DIR__.'/../../public/build' => public_path('vendor/genealabs/laravel-weblog'),
@@ -30,10 +30,8 @@ class LaravelWeblog extends AggregateServiceProvider
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/../../resources/views' => base_path('resources/views/vendor/genealabs/laravel-weblog/'),
+            __DIR__.'/../../resources/views' => base_path('resources/views/vendor/genealabs-laravel-weblog/'),
         ], 'views');
-
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'genealabs-laravel-weblog');
 
         if (!config('vendor.genealabs.laravel-weblog.user-model')) {
             throw new Exception("You haven't specified a user model. Please add an entry for 'model' or 'providers.users.model' in /config/auth.php. Alternatively you may publish the configuration file ('php artisan weblog:publish --config') and specify your user model there.");

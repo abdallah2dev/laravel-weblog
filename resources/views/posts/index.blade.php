@@ -10,6 +10,7 @@
             Add Post
         </a>
         <h1>Blog</h1>
+        
         @foreach ($posts as $post)
             <div class="card {{ $post->published_at ? '' : 'bg-faded text-muted' }} m-t-1">
                 <div class="card-block">
