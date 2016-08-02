@@ -28,13 +28,18 @@ class Rss extends Controller
         $feed = new Feed();
         $channel = new Channel();
         $posts = (new Post())->whereNotNull('published_at')->orderBy('published_at', 'DESC')->take(25)->get();
+        $lastBuildDate = null;
+
+        if (! $posts->isEmpty()) {
+            $lastBuildDate = $posts->first()->published_at->timestamp;
+        }
 
         $channel->title(config('vendor.genealabs.laravel-weblog.title'))
             ->description(config('vendor.genealabs.laravel-weblog.title'))
             ->url(url(config('vendor.genealabs.laravel-weblog.rss-route-name')))
             ->language('en')
             ->copyright(config('vendor.genealabs.laravel-weblog.copyright-notice'))
-            ->lastBuildDate($posts->first()->published_at->timestamp)
+            ->lastBuildDate($lastBuildDate)
             ->appendTo($feed);
 
         foreach ($posts as $post) {

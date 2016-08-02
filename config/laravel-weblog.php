@@ -6,4 +6,6 @@ return [
     'sitemap-route-name' => 'blog/sitemap',
     'user-model' => config('auth.model') ?? config('auth.providers.users.model') ?? null,
     'layout-view' => 'layouts.master',
+    'title' => 'Blog',
+    'copyright-notice' => '&copy; ' . date("Y") . ". All Rights reserved.",
 ];
