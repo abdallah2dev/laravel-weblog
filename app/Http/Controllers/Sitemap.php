@@ -12,7 +12,7 @@ class Sitemap extends Controller
     public function index(Cache $cache, Request $request) : string
     {
         $sitemap = new SitemapGenerator($cache, $request);
-        $sitemap->addSitemap(url(config('vendor.genealabs.laravel-weblog.blog-route-name')));
+        $sitemap->addSitemap(url(config('genealabs-laravel-weblog.blog-route-name')));
         $posts = (new Post())->whereNotNull('published_at')->get();
 
         foreach ($posts as $post) {

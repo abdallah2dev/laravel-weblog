@@ -1,5 +1,6 @@
 <?php namespace GeneaLabs\LaravelWeblog\Providers;
 
+use Exception;
 use GeneaLabs\LaravelWeblog\Console\Commands\Migrate;
 use GeneaLabs\LaravelWeblog\Console\Commands\Publish;
 use Illuminate\Support\AggregateServiceProvider;
@@ -16,25 +17,25 @@ class LaravelWeblog extends AggregateServiceProvider
     public function boot()
     {
         if (!$this->app->routesAreCached()) {
-            require __DIR__.'/../../routes/api.php';
-            require __DIR__.'/../../routes/web.php';
+            require __DIR__ . '/../../routes/api.php';
+            require __DIR__ . '/../../routes/web.php';
         }
 
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'genealabs-laravel-weblog');
 
         $this->publishes([
-            __DIR__.'/../../public/build' => public_path('vendor/genealabs/laravel-weblog'),
+            __DIR__ . '/../../public/build' => public_path('vendor/genealabs/laravel-weblog'),
         ], 'assets');
 
         $this->publishes([
-            __DIR__.'/../../config/laravel-weblog.php' => config_path('vendor/genealabs/laravel-weblog.php'),
+            __DIR__ . '/../../config/laravel-weblog.php' => config_path('genealabs-laravel-weblog.php'),
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/../../resources/views' => base_path('resources/views/vendor/genealabs-laravel-weblog/'),
+            __DIR__ . '/../../resources/views' => base_path('resources/views/vendor/genealabs-laravel-weblog/'),
         ], 'views');
 
-        if (!config('vendor.genealabs.laravel-weblog.user-model')) {
+        if (! config('genealabs-laravel-weblog.user-model')) {
             throw new Exception("You haven't specified a user model. Please add an entry for 'model' or 'providers.users.model' in /config/auth.php. Alternatively you may publish the configuration file ('php artisan weblog:publish --config') and specify your user model there.");
         }
 
@@ -46,7 +47,7 @@ class LaravelWeblog extends AggregateServiceProvider
         parent::register();
 
         AliasLoader::getInstance()->alias('sitemap', Sitemap::class);
-        $this->mergeConfigFrom(__DIR__.'/../../config/laravel-weblog.php', 'vendor.genealabs.laravel-weblog');
+        $this->mergeConfigFrom(__DIR__.'/../../config/laravel-weblog.php', 'genealabs-laravel-weblog');
         $this->commands(Migrate::class);
         $this->commands(Publish::class);
     }

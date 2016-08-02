@@ -34,11 +34,11 @@ class Rss extends Controller
             $lastBuildDate = $posts->first()->published_at->timestamp;
         }
 
-        $channel->title(config('vendor.genealabs.laravel-weblog.title'))
-            ->description(config('vendor.genealabs.laravel-weblog.title'))
-            ->url(url(config('vendor.genealabs.laravel-weblog.rss-route-name')))
+        $channel->title(config('genealabs-laravel-weblog.title'))
+            ->description(config('genealabs-laravel-weblog.title'))
+            ->url(url(config('genealabs-laravel-weblog.rss-route-name')))
             ->language('en')
-            ->copyright(config('vendor.genealabs.laravel-weblog.copyright-notice'))
+            ->copyright(config('genealabs-laravel-weblog.copyright-notice'))
             ->lastBuildDate($lastBuildDate)
             ->appendTo($feed);
 
@@ -63,7 +63,7 @@ class Rss extends Controller
         );
         $feed = str_replace(
             '<channel>',
-            '<channel>'."\n".'    <atom:link href="'.url(config('vendor.genealabs.laravel-weblog.rss-route-name')).
+            '<channel>'."\n".'    <atom:link href="'.url(config('genealabs-laravel-weblog.rss-route-name')).
             '" rel="self" type="application/rss+xml" />',
             $feed
         );

@@ -1,4 +1,4 @@
-@extends (config('vendor.genealabs.laravel-weblog.layout-view'))
+@extends (config('genealabs-laravel-weblog.layout-view'))
 
 @section ('css')
     <link rel="stylesheet" href="{{ elixir('css/app.css', 'vendor/genealabs/laravel-weblog') }}">
@@ -9,7 +9,7 @@
         <a href="{{ route('posts.create') }}" class="btn btn-primary-outline pull-sm-right">
             Add Post
         </a>
-        <h1>{{ config('vendor.genealabs.laravel-weblog.title') }}</h1>
+        <h1>{{ config('genealabs-laravel-weblog.title') }}</h1>
 
         @foreach ($posts as $post)
             <div class="card {{ $post->published_at ? '' : 'bg-faded text-muted' }} m-t-1">
