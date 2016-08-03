@@ -10,8 +10,10 @@ use Watson\Sitemap\Facades\Sitemap;
 class LaravelWeblog extends AggregateServiceProvider
 {
     protected $defer = false;
+
     protected $providers = [
         \Watson\Sitemap\SitemapServiceProvider::class,
+        \Conner\Tagging\Providers\TaggingServiceProvider::class,
     ];
 
     public function boot()
