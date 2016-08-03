@@ -124,11 +124,13 @@ Naturally the default layout won't necessarily be completely to your liking. The
 - [x] Ability to tag posts.
 - [x] Ability to assign a post to a category.
 - [ ] Ability to publish in the future.
-- [ ] Format and structure codebase.
-- [ ] Implement final design tweaks.
+- [ ] Format and structure codebase -- allow for overriding.
+- [ ] Implement final design tweaks -- base on Bootstrap 3.x.
+- [ ] Ensure Laravel 5.1 LTS (and therefore PHP 5.6.x) compatibility.
 
 ### 0.3
-- [ ] Add live-blogging functionality.
+- [ ] Add live-blogging functionality using Laravel Echo (Laravel 5.3 and up).
+- [ ] Add Bootstrap 4 compatibility.
 
 ### 0.4
 - [ ] Add email subscription functionality (newsletter signup form).
