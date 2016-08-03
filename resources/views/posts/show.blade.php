@@ -7,7 +7,7 @@
 @section ('content')
     <div class="container">
         <div class="clearfix p-t-1 m-b-2">
-            <img class="img-circle pull-left m-r-2" src="{{ 'http://www.gravatar.com/avatar/' . md5($post->author->email) . '?s=60' }}">
+            <img class="img-circle pull-left m-r-2" src="{{ '//www.gravatar.com/avatar/' . md5($post->author->email) . '?s=60' }}">
             <p><strong>{{ $post->author->name }}</strong></p>
             <p>
                 Published on {{ $post->published_at }}
