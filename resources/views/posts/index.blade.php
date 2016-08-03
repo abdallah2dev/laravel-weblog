@@ -6,10 +6,12 @@
 
 @section ('content')
     <div class="container">
-        <a href="{{ route('posts.create') }}" class="btn btn-primary-outline pull-sm-right">
-            Add Post
-        </a>
-        <h1>{{ config('genealabs-laravel-weblog.title') }}</h1>
+        <h1 class="page-header">
+            <a href="{{ route('posts.create') }}" class="btn btn-link pull-right">
+                <i class="fa fa-btn fa-3x fa-lg fa-plus-circle"></i>
+            </a>
+            {{ config('genealabs-laravel-weblog.title') }}
+        </h1>
 
         @foreach ($posts as $post)
             <div class="card {{ $post->published_at ? '' : 'bg-faded text-muted' }} m-t-1">
@@ -70,5 +72,19 @@
                 </div>
             </div>
         @endforeach
+
+        @if ($posts->isEmpty())
+            <blockquote class="blockquote blockquote-reverse">
+                <p>
+                    The secret of getting ahead is getting started. The
+                    <br>
+                    secret of getting started is breaking your complex
+                    overwhelming tasks into small manageable tasks, and then
+                    starting on the first one.
+                </p>
+                <footer class="blockquote-footer">Mark Twain</footer>
+            </blockquote>
+        @endif
+
     </div>
 @endsection
