@@ -1,7 +1,8 @@
 @extends (config('genealabs-laravel-weblog.layout-view'))
 
 @section ('css')
-    <link rel="stylesheet" href="{{ elixir('css/app.css', 'vendor/genealabs/laravel-weblog') }}">
+    {{-- TODO: elixir() helper method is broken in L5.1 --}}
+    <link rel="stylesheet" href="{{ asset('vendor/genealabs/laravel-weblog/css/app.css') }}">
 @endsection
 
 @section ('content')
