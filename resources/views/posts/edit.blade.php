@@ -6,7 +6,26 @@
 
 @section ('content')
     <div class="container">
-        <div class="clearfix">
+        <div class="media">
+            <div class="media-left">
+                <img class="img-circle media-object" src="{{ '//www.gravatar.com/avatar/' . md5(auth()->user()->email) . '?s=60' }}">
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">{{ auth()->user()->name }}</h4>
+                <p>{{ auth()->user()->bio }}</p>
+                <p class="form-inline">
+                    Draft
+                    <small><em class="saving-indicator text-muted"></em></small>
+                    <select id="category" class="pull-right">
+                        @foreach ($post->all_categories as $category)
+                            <option{{ $category === $post->category ? ' selected="selected"' : '' }}>{{ $post->category }}</option>
+                        @endforeach
+                    </select>
+                    <label class="form-control-label pull-right">Category</label>
+                </p>
+            </div>
+        </div>
+        {{-- <div class="clearfix">
             <img class="img-circle pull-left" src="{{ '//www.gravatar.com/avatar/' . md5(auth()->user()->email) . '?s=60' }}">
             <p class="form-inline">
                 <strong>{{ auth()->user()->name }}</strong>
@@ -24,7 +43,7 @@
                 </select>
                 <label class="form-control-label pull-right">Category</label>
             </p>
-        </div>
+        </div> --}}
         <h1 id="post-title" class="title-editable" data-placeholder="Title">{{ $post->title }}</h1>
     </div>
 

@@ -23,6 +23,8 @@ class LaravelWeblog extends AggregateServiceProvider
             require __DIR__ . '/../../routes/web.php';
         }
 
+        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
+        $this->loadMigrationsFrom(base_path('vendor/rtconner/laravel-tagging/migrations'));
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'genealabs-laravel-weblog');
 
         $this->publishes([
@@ -40,8 +42,6 @@ class LaravelWeblog extends AggregateServiceProvider
         if (! config('genealabs-laravel-weblog.user-model')) {
             throw new Exception("You haven't specified a user model. Please add an entry for 'model' or 'providers.users.model' in /config/auth.php. Alternatively you may publish the configuration file ('php artisan weblog:publish --config') and specify your user model there.");
         }
-
-        // $this->registerBladeDirective('open', 'form');
     }
 
     public function register()
