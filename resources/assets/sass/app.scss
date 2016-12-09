@@ -1,5 +1,11 @@
-@import 'bootstrap-customizations';
-@import 'cropper-customizations';
-@import 'medium-editor-customizations';
+@import "node_modules/font-awesome/scss/font-awesome";
 
-@import 'laravel-weblog';
+// @import "node_modules/medium-editor-insert-plugin/dist/css/medium-editor-insert-plugin";
+@import "medium-editor-insert";
+@import "node_modules/medium-editor/src/sass/medium-editor";
+@import "node_modules/medium-editor/src/sass/themes/tim";
+// @import 'bootstrap-customizations';
+// @import 'cropper-customizations';
+// @import 'medium-editor-customizations';
+
+// @import 'laravel-weblog';

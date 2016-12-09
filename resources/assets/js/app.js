@@ -1,8 +1,12 @@
-// if (global.$ === undefined && window.$ === undefined) {
-    global.$ = global.jQuery = require('jquery');
-// }
+require('./bootstrap');
 
-global.MediumEditor = require('medium-editor');
-
-require('selectize');
-require('./post-editor');
+$(function () {
+    var bodyEditor = new MediumEditor('.body-editable', {
+        etensions: {
+            insert: new MediumEditorInsert()
+        }
+    });
+    // $('.bodyeditable').mediumInsert({
+    //     editor: bodyEditor
+    // });
+});

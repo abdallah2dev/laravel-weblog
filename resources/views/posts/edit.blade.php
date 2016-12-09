@@ -1,10 +1,7 @@
 @extends (config('genealabs-laravel-weblog.layout-view'))
 
-@section ('css')
-    <link rel="stylesheet" href="{{ elixir('css/app.css', 'vendor/genealabs/laravel-weblog') }}">
-@endsection
-
 @section ('content')
+    <link rel="stylesheet" href="{{ elixir('css/app.css', 'vendor/genealabs/laravel-weblog') }}">
     <div class="container">
         <div class="media">
             <div class="media-left">
@@ -25,25 +22,6 @@
                 </p>
             </div>
         </div>
-        {{-- <div class="clearfix">
-            <img class="img-circle pull-left" src="{{ '//www.gravatar.com/avatar/' . md5(auth()->user()->email) . '?s=60' }}">
-            <p class="form-inline">
-                <strong>{{ auth()->user()->name }}</strong>
-                <input type="text" id="tags" class="form-control pull-right" value="{{ $post->tags->implode('name', ',') }}">
-                <label class="form-control-label pull-right">Tags</label>
-            </p>
-            <p>{{ auth()->user()->bio }}</p>
-            <p class="form-inline">
-                Draft
-                <small><em class="saving-indicator text-muted"></em></small>
-                <select id="category" class="pull-right">
-                    @foreach ($post->all_categories as $category)
-                        <option{{ $category === $post->category ? ' selected="selected"' : '' }}>{{ $post->category }}</option>
-                    @endforeach
-                </select>
-                <label class="form-control-label pull-right">Category</label>
-            </p>
-        </div> --}}
         <h1 id="post-title" class="title-editable" data-placeholder="Title">{{ $post->title }}</h1>
     </div>
 
@@ -53,12 +31,9 @@
 
     <div class="container">
         <div class="clearfix p-t-1 m-b-2">
-            <div id="post-content" class="body-editable" data-placeholder="Tell your story...">{!! $post->content !!}</div>
+            <textarea id="post-content" class="body-editable form-control" data-placeholder="Tell your story...">{!! $post->content !!}</textarea>
         </div>
     </div>
-@endsection
-
-@section ('js')
     <script>
         window.csrfToken = '{{ csrf_token() }}';
         window.postUpdateUrl = '{{ route('posts.update', $post->id) }}';
@@ -67,6 +42,5 @@
         window.imageDeleteUrl = '{{ route('genealabs-laravel-weblog-images.destroy', $post->id) }}';
         window.tags = {!! $tags->toJson() !!}
     </script>
-
-    <script src="{{ elixir('js/app.js', 'vendor/genealabs/laravel-weblog') }}"></script>
+    <script src="{!! elixir('js/app.js', 'vendor/genealabs/laravel-weblog') !!}"></script>
 @endsection
