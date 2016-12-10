@@ -24,7 +24,7 @@ if (window.imageDeleteUrl === undefined) {
     window.imageDeleteUrl = '';
 }
 
-$(document).ready(function () {
+$(function () {
     var titleEditor = new MediumEditor('.title-editable', {
         buttonLabels: 'fontawesome',
         toolbar: {
@@ -37,10 +37,10 @@ $(document).ready(function () {
             buttons: []
         }
     });
-    var bodyEditor = new MediumEditor('.body-editable', {
-        buttonLabels: 'fontawesome',
+    var bodyEditor = new MediumEditor('#post-content', {
+        buttonLabels: 'fontawesome'
     });
-    $('.body-editable').mediumInsert({
+    $('#post-content').mediumInsert({
         editor: bodyEditor,
         addons: {
             images: {
@@ -127,23 +127,23 @@ $(document).ready(function () {
     $('#post-image').prop('contenteditable', false);
     $('#post-image').blur(hideMediaInsertButtons);
     $('#post-content').blur(hideContentInsertButtons);
-    $('#tags').selectize({
-        delimiter: ',',
-        persist: false,
-        valueField: 'tag',
-        labelField: 'tag',
-        searchField: 'tag',
-        options: tags,
-        create: function(input) {
-            return {
-                tag: input
-            };
-        }
-    });
-    $('#category').selectize({
-        create: true,
-        sortField: 'text'
-    });
+    // $('#tags').selectize({
+    //     delimiter: ',',
+    //     persist: false,
+    //     valueField: 'tag',
+    //     labelField: 'tag',
+    //     searchField: 'tag',
+    //     options: tags,
+    //     create: function(input) {
+    //         return {
+    //             tag: input
+    //         };
+    //     }
+    // });
+    // $('#category').selectize({
+    //     create: true,
+    //     sortField: 'text'
+    // });
 
     function savePost()
     {

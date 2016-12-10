@@ -1,3 +1,13 @@
+// $fa-font-path: "../../fonts";
+@import "node_modules/font-awesome/scss/font-awesome";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "node_modules/medium-editor/dist/css/medium-editor";
+@import "node_modules/medium-editor/dist/css/themes/default";
+@import "node_modules/medium-editor-insert-plugin/dist/css/medium-editor-insert-plugin";
+@import "node_modules/cropper/dist/cropper";
+@import "node_modules/selectize/dist/css/selectize";
+
 @import 'bootstrap-customizations';
 @import 'cropper-customizations';
 @import 'medium-editor-customizations';

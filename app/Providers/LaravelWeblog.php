@@ -18,10 +18,8 @@ class LaravelWeblog extends AggregateServiceProvider
 
     public function boot()
     {
-        if (!$this->app->routesAreCached()) {
-            require __DIR__ . '/../../routes/api.php';
-            require __DIR__ . '/../../routes/web.php';
-        }
+        require __DIR__ . '/../../routes/api.php';
+        require __DIR__ . '/../../routes/web.php';
 
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'genealabs-laravel-weblog');
 

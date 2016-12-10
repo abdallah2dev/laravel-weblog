@@ -1,13 +1,14 @@
 @extends (config('genealabs-laravel-weblog.layout-view'))
 
-@section ('css')
-    <link rel="stylesheet" href="{{ elixir('css/app.css', 'vendor/genealabs/laravel-weblog') }}">
-@endsection
-
 @section ('content')
+    <style>
+        @import "{!! elixir('css/app.css', 'vendor/genealabs/laravel-weblog') !!}";
+    </style>
+
     <div class="container">
         <div class="clearfix">
-            <img class="img-circle pull-left" src="{{ '//www.gravatar.com/avatar/' . md5(auth()->user()->email) . '?s=60' }}">
+            {{ Auth::user()->name }}
+            <img class="img-circle pull-left" src="{!! '//www.gravatar.com/avatar/' . md5(auth()->user()->email) . '?s=60' !!}">
             <p class="form-inline">
                 <strong>{{ auth()->user()->name }}</strong>
                 <input type="text" id="tags" class="form-control pull-right" value="{{ $post->tags->implode('name', ',') }}">
@@ -37,9 +38,7 @@
             <div id="post-content" class="body-editable" data-placeholder="Tell your story...">{!! $post->content !!}</div>
         </div>
     </div>
-@endsection
 
-@section ('js')
     <script>
         window.csrfToken = '{{ csrf_token() }}';
         window.postUpdateUrl = '{{ route('posts.update', $post->id) }}';
@@ -49,5 +48,5 @@
         window.tags = {!! $tags->toJson() !!}
     </script>
 
-    <script src="{{ elixir('js/app.js', 'vendor/genealabs/laravel-weblog') }}"></script>
+    <script src="{!! elixir('js/app.js', 'vendor/genealabs/laravel-weblog') !!}"></script>
 @endsection

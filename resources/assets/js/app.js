@@ -1,8 +1,12 @@
 // if (global.$ === undefined && window.$ === undefined) {
-    global.$ = global.jQuery = require('jquery');
+    window.$ = window.jQuery = require('jquery');
 // }
 
-global.MediumEditor = require('medium-editor');
+require('bootstrap-sass');
+
+window.MediumEditor = require('medium-editor');
+require('medium-editor-insert-plugin')($);
+require('cropper');
 
 require('selectize');
 require('./post-editor');
