@@ -18,10 +18,15 @@ class PostUpdateRequest extends Request
         ];
     }
 
-    public function process(Post $post) : Post
+    public function process() : Post
     {
+        $post = $this->route('post');
         $post->fill($this->except('_token', 'tags'));
-        $post->tag(explode(',', $this->get('tags')));
+
+        if ($this->has('tags')) {
+            $post->tag(explode(',', $this->input('tags')));
+        }
+
         $post->save();
 
         return $post;

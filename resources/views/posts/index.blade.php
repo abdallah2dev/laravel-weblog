@@ -1,11 +1,10 @@
 @extends (config('genealabs-laravel-weblog.layout-view'))
 
-@section ('css')
-    {{-- TODO: elixir() helper method is broken in L5.1 --}}
-    <link rel="stylesheet" href="{{ asset('vendor/genealabs/laravel-weblog/css/app.css') }}">
-@endsection
-
 @section ('content')
+    <style>
+        @import "{!! elixir('css/app.css', 'vendor/genealabs/laravel-weblog') !!}";
+    </style>
+
     <div class="container">
         <h1 class="page-header">
             <a href="{{ route('posts.create') }}" class="btn btn-link pull-right">

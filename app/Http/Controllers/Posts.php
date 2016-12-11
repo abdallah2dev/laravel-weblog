@@ -62,8 +62,8 @@ class Posts extends Controller
         return view('genealabs-laravel-weblog::posts.edit', compact('post', 'tags'));
     }
 
-    public function update(PostModel $posts, PostUpdateRequest $request) : PostModel
+    public function update(PostUpdateRequest $request) : PostModel
     {
-        return $request->process($posts);
+        return $request->process();
     }
 }

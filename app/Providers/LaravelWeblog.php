@@ -3,6 +3,7 @@
 use Exception;
 use GeneaLabs\LaravelWeblog\Console\Commands\Migrate;
 use GeneaLabs\LaravelWeblog\Console\Commands\Publish;
+use GeneaLabs\LaravelWeblog\Post;
 use Illuminate\Support\AggregateServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use Watson\Sitemap\Facades\Sitemap;
@@ -20,6 +21,8 @@ class LaravelWeblog extends AggregateServiceProvider
     {
         require __DIR__ . '/../../routes/api.php';
         require __DIR__ . '/../../routes/web.php';
+
+        app('router')->model('post', Post::class);
 
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'genealabs-laravel-weblog');
 
