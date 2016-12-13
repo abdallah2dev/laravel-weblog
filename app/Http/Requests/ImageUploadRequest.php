@@ -1,4 +1,5 @@
 <?php namespace GeneaLabs\LaravelWeblog\Http\Requests;
+
 use Illuminate\Support\Collection;
 
 class ImageUploadRequest extends Request

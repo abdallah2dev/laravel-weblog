@@ -86,10 +86,11 @@ $(function () {
                     url: window.imageUploadUrl,
                     type: 'POST',
                     acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+                    multipart: true,
                     formData: [
                         {
                             name: '_token',
-                            value: '{{ csrf_token() }}'
+                            value: window.csrfToken
                         }
                     ]
                 },
@@ -186,13 +187,12 @@ $(function () {
             }
 
             if ($('#post-image').has('.cropper-face button').length === 0) {
-                $('.cropper-face').html('<button type="button" class="btn btn-sm btn-primary" onclick="cropImage()"><i class="fa fa-btn fa-crop"></i> Crop</button>');
+                $('.cropper-face').html('<button type="button" class="btn btn-sm btn-primary" onclick="cropImage();"><i class="fa fa-btn fa-crop"></i> Crop</button>');
             }
         });
     }
 
-    function cropImage()
-    {
+    window.cropImage = function () {
         var imageData = featuredImageCroppedCanvas.toDataURL();
 
         $('#post-image img').cropper('destroy');
@@ -219,7 +219,7 @@ $(function () {
         });
 
         savingIsEnabled = true;
-    }
+    };
 
     function stretchFeaturedImage()
     {
