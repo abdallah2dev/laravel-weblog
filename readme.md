@@ -1,7 +1,7 @@
 ![laravel-weblog](https://cloud.githubusercontent.com/assets/1791050/16365117/5e2bb826-3bab-11e6-800e-675a1eef6bbb.jpg)
 
 # Laravel Weblog
-[![Join the chat at https://gitter.im/GeneaLabs/laravel-weblog](https://badges.gitter.im/GeneaLabs/laravel-weblog.svg)](https://gitter.im/GeneaLabs/laravel-casts?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/GeneaLabs/laravel-weblog](https://badges.gitter.im/GeneaLabs/laravel-weblog.svg)](https://gitter.im/GeneaLabs/laravel-weblog?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Features
 
